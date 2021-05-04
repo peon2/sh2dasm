@@ -1,0 +1,16 @@
+A CLI tool for disassembling SuperH-2 binaries. Credits to the MAME project for much of this project being taken from there.
+
+Written primarily for use with cps3 binary dumps. 
+
+Some common use cases:
+
+sh2dasm -sd cps3 redearth -p 0x6000000 -g 0x100 simm1.0 simm1.1 simm1.2 simm1.3 -o out -r 0x10
+	-> Decrypt according to Red Earth rules then Disassemble 16 bytes from 0x100 onwards with a starting offset of 0x6000000 by combining the 4 simm files together
+
+	CPS3 decrypts using the program counter so its important to set it to 0x6000000 for the first set of simms and 0x6800000 for the second set.
+
+sh2dasm -d cps3 sfiii3n -p 0x6800000 20 -r 0x20
+	-> Decrypt and according to Street Fighter 3: Third Strike rules then Disassemble 32 bytes from the beginning of an old-style rom dump.
+
+sh2dasm -p 0x6000000 10 -o out
+	-> Take what might be an already decrypted file, disassemble and output in the file out.
